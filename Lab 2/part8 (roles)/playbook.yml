@@ -1,0 +1,5 @@
+- name: my playbook
+  gather_facts: false
+  hosts: 172.17.0.2
+  roles:
+    - web

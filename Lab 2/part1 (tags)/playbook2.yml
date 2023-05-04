@@ -1,0 +1,15 @@
+- name: play1
+  gather_facts: false
+  hosts: 172.17.0.2
+
+  tasks:
+  - name: task1
+    tags: update
+    apt:
+      update_cache: true
+  
+  - name: task2
+    tags: [always]
+    apt:
+      name: nginx
+      state: latest

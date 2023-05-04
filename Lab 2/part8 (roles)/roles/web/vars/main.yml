@@ -1,0 +1,6 @@
+package_name: nginx
+welcome_msg: Hello from the template
+my_files:
+  - index.html
+  - script.js
+  - style.css

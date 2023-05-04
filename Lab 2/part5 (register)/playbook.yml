@@ -1,0 +1,11 @@
+- name: my play with conditions
+  gather_facts: false
+  hosts: 172.17.0.2
+
+  tasks:
+  - name: task1
+    command: cat /var/www/html/index.html
+    register: my_result
+  - name: task 2
+    debug:
+      var: my_result

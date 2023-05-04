@@ -1,0 +1,20 @@
+- name: task1 install nginx
+  sysvinit:
+    name: nginx
+    state: restarted
+    enabled: yes
+  notify: handler_copying
+
+
+  # hanlder runs onlt if state of task is changed
+
+
+
+
+
+
+# - name: task1 install nginx
+#   apt:
+#     name: "{{ package_name }}"
+#     state: latest
+#   notify: handler_copying

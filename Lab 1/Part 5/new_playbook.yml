@@ -1,0 +1,6 @@
+- name: play1
+  gather_facts: false
+  hosts: 172.17.0.3
+  tasks:
+  - apt:
+      update_cache: true

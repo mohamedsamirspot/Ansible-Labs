@@ -1,0 +1,11 @@
+- name: templates
+  gather_facts: false
+  hosts: 172.17.0.2
+  vars:
+    welcome_msg: Hello template from playbook
+
+  tasks:
+  - name: task1
+    template:
+      src: ./index.html.j2
+      dest: /var/www/html/index.html

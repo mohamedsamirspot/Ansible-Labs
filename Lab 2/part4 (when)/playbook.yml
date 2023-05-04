@@ -1,0 +1,25 @@
+- name: my play with conditions
+  hosts: 172.17.0.2
+  vars:
+    var1: true
+  tasks:
+  - name: task1 with conditions
+    package:
+      name: nginx
+    when: ansible_facts['distribution'] == "Ubuntu"
+  - name: task 2  with conditions
+    package:
+      name: httpd
+    when: ansible_facts['distribution'] == "CentOS"
+  - name: task 3 Restart nginx if os is Ubuntu
+    sysvinit:
+      name: nginx
+      state: restarted
+      enabled: yes
+    when: ansible_facts['distribution'] == "Ubuntu"
+  - name: task 4 Restart nginx on Ubuntu if var1 = true
+    sysvinit:
+      name: nginx
+      state: restarted
+      enabled: yes
+    when: var1 == true

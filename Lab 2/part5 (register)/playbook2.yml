@@ -1,0 +1,15 @@
+- name: RegisterAndWhen
+  gather_facts: false
+  hosts: 172.17.0.2
+  tasks:
+  - name: task1
+    package:
+      name: nginx
+      state: present
+    register: nginx_install
+  - name: task2
+    sysvinit:
+      name: nginx
+      state: restarted
+      enabled: yes
+    when: nginx_install.changed or not nginx_install.failed

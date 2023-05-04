@@ -1,0 +1,25 @@
+- name: play1
+  gather_facts: false
+  hosts: 172.17.0.2
+  tasks:
+  - name: "task1: update cache"
+    apt:
+      update_cache: true
+  - name: "task2: install nginx"
+    apt:
+      name: nginx
+      state: present
+  - name: "task3: copy file"
+    copy:
+      src: ./index.html
+      dest: /var/www/html/index.html
+  - name: "task4: restart nginx"
+    sysvinit:
+      name: nginx
+      state: restarted
+      enabled: yes
+
+  # - name: "task4: restart nginx"
+  #   service:
+  #     name: nginx
+  #     state: restarted
